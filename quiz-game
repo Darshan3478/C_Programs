@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char questions[][100] = {
+        "What is the capital of France?",
+        "Which planet is known as the Red Planet?",
+        "Who wrote the play 'Romeo and Juliet'?",
+        "Which gas do humans exhale during respiration?",
+        "What is the largest mammal in the world?",
+        "Which is the smallest prime number?",
+        "Which element has the chemical symbol 'O'?",
+        "Who was the first person to walk on the Moon?",
+        "What is the currency of Japan?",
+        "Which continent is the Sahara Desert located in?"
+    };
+
+    char answers[][100] = {
+        "A) Berlin\nB) Madrid\nC) Paris\nD) Rome",
+        "A) Venus\nB) Mars\nC) Jupiter\nD) Saturn",
+        "A) William Shakespeare\nB) Charles Dickens\nC) Mark Twain\nD) Jane Austen",
+        "A) Oxygen\nB) Carbon Dioxide\nC) Nitrogen\nD) Hydrogen",
+        "A) Elephant\nB) Blue Whale\nC) Giraffe\nD) Hippopotamus",
+        "A) 0\nB) 1\nC) 2\nD) 3",
+        "A) Oxygen\nB) Gold\nC) Silver\nD) Iron",
+        "A) Yuri Gagarin\nB) Neil Armstrong\nC) Buzz Aldrin\nD) Michael Collins",
+        "A) Yen\nB) Dollar\nC) Peso\nD) Won",
+        "A) Asia\nB) Africa\nC) Australia\nD) South America"
+    };
+
+    char answerkey[] = {'C', 'B', 'A', 'B', 'B','C', 'A', 'B', 'A', 'B'};
+    
+    int size = sizeof(questions) / sizeof(questions[0]);
+
+    char guess='\0';
+    int score=0;
+
+    printf("*** QUIZ GAME ***\n");
+
+    for (int i = 0; i < size; i++) {
+        printf("\nQ%d: %s\n", i + 1, questions[i]);
+        printf("%s\n\n", answers[i]);
+        printf("Enter your guess: ");
+        scanf(" %c",&guess);
+        guess=toupper(guess);
+        if(guess==answerkey[i]){
+            printf("Correct!\n");
+            score++;
+        }
+        else{
+            printf("Wrong!\n");
+        }
+    }
+    printf("\nYour score is %d out of %d.",score,size);
+    return 0;
+}
